@@ -48,7 +48,7 @@
                             <p-check color="primary" name="send_now" v-model="send_now" value="1">Send now</p-check>
                         </div>
                         <div v-if="!send_now">
-                            <VueCtkDateTimePicker v-model="date" />
+                            <VueCtkDateTimePicker format="M/DD/YYYY HH:mm:ss" v-model="date" />
                             <ValidationProvider rules="required|isDate|dateGreaterThanNow" v-slot="{errors}" name="Date">
                                 <input type="hidden" name="date" v-model="date">
                                 <div class="invalid-feedback d-block" v-if="errors[0]">{{errors[0]}}</div>
@@ -84,8 +84,11 @@ for (let rule in rules) {
 // date
 extend('isDate', {
     validate: value => {
-        if(value)
-            return (new Date(value) !== "Invalid Date") && !isNaN(new Date(value));
+        if(value){
+            // console.log('value: ' + value);
+            var date = Date.parse(value);
+            return (date !== "Invalid Date") && !isNaN(date);
+        }
         return false;
     },
     message: 'The {_field_} must be date'
@@ -94,8 +97,8 @@ extend('isDate', {
 extend('dateGreaterThanNow', {
     validate: value => {
         var now = new Date();
-        var date = new Date(value);
-        return date.getTime() > now.getTime();
+        var date = Date.parse(value);
+        return date > now.getTime();
     },
     message: 'date must be future date'
 })

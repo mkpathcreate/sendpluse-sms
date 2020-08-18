@@ -30,6 +30,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('send-sms-form', require('./components/SendSmsForm.vue').default);
+Vue.component('my-campaigns', require('./components/MyCampaigns.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

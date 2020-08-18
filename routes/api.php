@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::apiResource('/mailing-list', 'Api\SendPulseController');
+Route::apiResource('/my-campaigns', 'Api\CampaignsController');
 

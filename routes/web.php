@@ -17,4 +17,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'IndexController@index');
 Route::post('/send-sms', 'IndexController@send_sms');
+Route::get('/my-campaigns', 'IndexController@my_campaigns');
+Route::get('/my-campaigns/{id}', 'IndexController@my_campaign_info');
+Route::get('/my-campaigns/{id}/cancel', 'IndexController@my_campaign_cancel');
+Route::get('/my-campaigns/{id}/delete', 'IndexController@my_campaign_delete');
 
