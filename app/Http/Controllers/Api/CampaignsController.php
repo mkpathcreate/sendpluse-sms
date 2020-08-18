@@ -23,6 +23,8 @@ $api_user_id = env('SEND_PULSE_API_USER_id');
 
 
         $campaigns = $spa_client->listCampaigns();
-        return $campaigns;
+        //Show only last 10 Campaigns, reverse sort array based on date as well
+        return array_slice(array_reverse($campaigns),0,10);
+        //return $campaigns;
     }
 }
