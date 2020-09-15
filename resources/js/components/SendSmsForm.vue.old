@@ -43,15 +43,18 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-4"><label>Schedule Sending Time</label></div>
- <div class="col-sm-8">
-                        <div>
+                    <div class="col-sm-8">
+
+<!--                        <div>
+                            <p-check color="primary" name="send_now" v-model="send_now" value="1">Send now</p-check>
                         </div>
+-->
                         <div v-if="!send_now">
-                            <VueCtkDateTimePicker format="M/DD/YYYY HH:mm:ss" v-model="date" />
-                            <ValidationProvider rules="required|isDate" v-slot="{errors}" name="Date">
+                            <VueCtkDateTimePicker v-model="date" />
+                            <ValidationProvider rules="required|isDate|dateGreaterThanNow" v-slot="{errors}" name="Date">
                                 <input type="hidden" name="date" v-model="date">
-                               <div class="invalid-feedback d-block" v-if="errors[0]">{{errors[0]}}</div> 
-                            </ValidationProvider> 
+                                <div class="invalid-feedback d-block" v-if="errors[0]">{{errors[0]}}</div>
+                            </ValidationProvider>
                         </div>
                     </div>
                 </div>
@@ -83,15 +86,22 @@ for (let rule in rules) {
 // date
 extend('isDate', {
     validate: value => {
-        if(value){
-            // console.log('value: ' + value);
-            var date = Date.parse(value);
-            return (date !== "Invalid Date") && !isNaN(date);
-        }
+        if(value)
+            return (new Date(value) !== "Invalid Date") && !isNaN(new Date(value));
         return false;
     },
     message: 'The {_field_} must be date'
 });
+// dateGreaterThanNow
+extend('dateGreaterThanNow', {
+    validate: value => {
+        var now = new Date();
+        var date = new Date(value);
+        return date.getTime() > now.getTime();
+    },
+    message: 'date must be future date'
+})
+
 export default {
     components: {
         ValidationProvider, 
@@ -137,3 +147,4 @@ export default {
     }
 }
 </script>
+

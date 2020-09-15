@@ -48,10 +48,10 @@
                         </div>
                         <div v-if="!send_now">
                             <VueCtkDateTimePicker format="M/DD/YYYY HH:mm:ss" v-model="date" />
-                            <ValidationProvider rules="required|isDate" v-slot="{errors}" name="Date">
+                         <!--   <ValidationProvider rules="required|isDate" v-slot="{errors}" name="Date"> -->
                                 <input type="hidden" name="date" v-model="date">
-                               <div class="invalid-feedback d-block" v-if="errors[0]">{{errors[0]}}</div> 
-                            </ValidationProvider> 
+                         <!--       <div class="invalid-feedback d-block" v-if="errors[0]">{{errors[0]}}</div> 
+                            </ValidationProvider> -->
                         </div>
                     </div>
                 </div>
@@ -92,6 +92,24 @@ extend('isDate', {
     },
     message: 'The {_field_} must be date'
 });
+// dateGreaterThanNow
+extend('dateGreaterThanNow', {
+    validate: value => {
+        var now = new Date();
+	//var now = this.$moment.format('MMMM Do YYYY, h:mm:ss a');
+	// mk code       
+	//var now = Math.round(new Date().getTime() / 1000);
+	//var now = now - (12 * 3600);
+
+	var date = Date.parse(value);
+	//console.log(date);
+        //return now.getTime() > '00:00:00 00:00';
+	var d3 = true;
+	return d3;
+    },
+    message: 'date must be future date'
+})
+
 export default {
     components: {
         ValidationProvider, 
@@ -137,3 +155,4 @@ export default {
     }
 }
 </script>
+

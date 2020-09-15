@@ -15,6 +15,7 @@ class IndexController extends Controller
      */
     public function index(){
         return view('index');
+
     }
 
     /**
@@ -27,7 +28,7 @@ class IndexController extends Controller
             'sender' => 'required|max:11',
             'sms_text' => 'required|max:160',
             'mailing_list_id' => 'required|integer',
-            'date' => !$request->send_now ? ['required', 'date', new DateGreaterThanNow] : ''
+            'date' => !$request->send_now ? ['required', 'date'] : ''
         ]);
         $date = $request->send_now
             ? Carbon::now()->addMinutes(15)->toDateTimeString()
@@ -37,11 +38,18 @@ class IndexController extends Controller
 
 //        $spa_client = new ApiClient(env('SEND_PULSE_API_USER_ID'),
 //            env('SEND_PULSE_API_SECRET'), new FileStorage());
+
+//        $spa_client = new ApiClient('b13edf69376b0d4b925d4d7394bbc62e',('78282d5c5cae2a342a11b714914895d2'), new FileStorage());
+
+	
+
 $api_user_id = env('SEND_PULSE_API_USER_id');
         $api_user_secret = env('SEND_PULSE_API_SECRET');
+        var_dump($api_user_id,$api_user_secret);
         $spa_client = new ApiClient($api_user_id,$api_user_secret, new FileStorage());
 
 //	var_dump($date);
+
         // Create SMS campaign by book
         $params = [
             'sender' => $request->sender,
@@ -53,7 +61,7 @@ $api_user_id = env('SEND_PULSE_API_USER_id');
         ];
 
         $send_sms_mailing_list = $spa_client->sendSmsByBook($request->mailing_list_id, $params, $additionalParams);
-var_dump($send_sms_mailing_list);       
+//var_dump($send_sms_mailing_list);       
 if($send_sms_mailing_list->result){
             session()->flash('success', 'Campaign was created successfully');
         }

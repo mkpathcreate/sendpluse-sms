@@ -16,7 +16,6 @@ window.Vue = require('vue');
 // Vue.use(BootstrapVue);
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

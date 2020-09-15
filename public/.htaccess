@@ -19,3 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+#AuthType Basic
+#AuthName "ADFX SMS" 
+#AuthUserFile /var/www/smsadfx/.htpasswd 
+#require valid-user
