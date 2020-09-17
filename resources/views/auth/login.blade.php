@@ -1,16 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="breadcrumb-area gray-bg">
-    <div class="container">
-        <div class="breadcrumb-content">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li class="active"> login </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+
 <div class="login-register-area pt-70 pb-75">
     <div class="container">
         <div class="row">
@@ -42,7 +37,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="button-boxx">
+                            <div class="button-box text-right">
                                 <div class="login-toggle-btn">
                                     <input class="form-check-input" type="checkbox" name="remember" 
                                         id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -50,15 +45,10 @@
                                     <label for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
-                                    <a href="{{route('password.request')}}">Forgot Password?</a>
-                                </div>
-                                <button type="submit" class="btn btn-pink font-bold"><span>Login</span></button>
+                                <button type="submit" class="btn btn-primary"><span>Login</span></button>
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="mt-10 text-center">
-                    If you are not registered, Join us <a href="/register" class="link underline">here</a>
                 </div>
             </div>
         </div>

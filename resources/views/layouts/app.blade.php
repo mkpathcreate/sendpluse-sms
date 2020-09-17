@@ -37,14 +37,30 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/my-campaigns">My Campaigns</a>
                             </li>
+
+<li class="nav-item">
+<a class="nav-link" href="/documentation"> Documentation </a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#"> </a>
+</li>
+
+
+
  <li class="nav-item">
                                 <a class="nav-link" href="#">Server Time:</a>
                             </li>
+
 			 <li class="nav-item">
 <a class="nav-link" href="#">
-<iframe src="http://free.timeanddate.com/clock/i7g8s3sa/n367/tlua/fs13/tct/pct/ahl/avt/pt7/tt0/tw0/tm1/tb2" frameborder="0" width="115" height="22" allowTransparency="true"></iframe>
+<iframe src="http://free.timeanddate.com/clock/i7g8s3sa/n367/tlua/fs13/tct/pct/ahl/avt/pt7/tt0/tw0/tm1/tb2" frameborder="0" width="135" height="22" allowTransparency="true"></iframe>
 </a>
 </li>
+
+
+
+
                         </ul>
                     </div>
                 </nav>

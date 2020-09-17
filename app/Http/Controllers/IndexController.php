@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sendpulse\RestApi\ApiClient;
 use Sendpulse\RestApi\Storage\FileStorage;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -14,7 +15,13 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-        return view('index');
+             return view('index');
+
+
+    }
+
+    public function documentation(){
+        return view('documentation');
 
     }
 
